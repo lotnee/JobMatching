@@ -2,3 +2,4 @@ Create a virtual environment by running the following command: python -m venv my
 install all requirements by running: pip install -r requirements.txt 
 Run main.py : python main.py 
 To run tests run python -m pytest
+You can change the csvs data in line 11 and 12 in main.py 
