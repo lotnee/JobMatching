@@ -74,32 +74,13 @@ def setup_job_match(job_seeker_list: List[JobSeeker], job_list: List[Job]) -> Li
     job_match_attribute_future_list = []
     batch_outer= 100
     batch_inner = 100
-    print(MAX_WORKERS)
     for i in range(0, len(job_seeker_list), batch_outer):
         job_seeker_batch = job_seeker_list[i:i+batch_outer]
         for j in range(0, len(job_list), batch_inner):
             job_list_batch = job_list[j:j+batch_inner]
-                # future = executor.submit(construct_job_match_attribute_dict, job_seeker=job_seeker, job=job)
             execute_batch(job_seeker_batch=job_seeker_batch, job_list_batch=job_list_batch, future_list=job_match_attribute_future_list)
-            # executor.submit(execute_batch, job_seeker_batch=job_seeker_batch, job_list_batch=job_list_batch, future_list=job_match_attribute_future_list)
-                
-                # job_match_attribute_future_list.append(future)
-                
-                # for job in job_list:
-                #     job_match_attributes = construct_job_match_attribute_dict(job_seeker=job_seeker, job=job)
-                #     job_match_attribute_list.append(job_match_attributes)
-    print("getting the")
-
-    # for i in range(0, len(job_match_attribute_future_list), batch_outer):
-    #     job_match_attribute_future_batch = job_match_attribute_future_list[i:i+batch_outer]
-    #     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            
-
-
-    
 
     job_match_attribute_list = [future.result() for future in job_match_attribute_future_list]
-
     job_match_object_list = setup_object(type="Job Match",data=job_match_attribute_list)
     return job_match_object_list
 
