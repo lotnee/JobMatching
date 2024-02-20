@@ -9,7 +9,7 @@ def main():
     try:
         print("Getting csvs data")
         jobs_list = utils.get_csvs(Path("data/jobs.csv"))
-        job_seeker_list = utils.get_csvs(Path("data/job_seeker_thousands.csv"))
+        job_seeker_list = utils.get_csvs(Path("data/jobseekers.csv"))
     except FileNotFoundError as e:
         print(f'Something went wrong when trying to load the csvs: {e}')
         exit()
